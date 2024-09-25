@@ -7,16 +7,16 @@ pipeline{
 			steps{
                      git 'https://github.com/sagarrajput2111/Maven-build-jenkins.git'			}
 		}
-		stage('second step')
+		stage('generating artifacts')
 		{
 			steps{
-		   echo 'Hello World'
+		   sh 'mvn clean install'
 			}
 		}
-		stage('third step')
+		stage('deploying code to tomcat')
 		{
 			steps{
-		   echo 'Hello World'
+		   deploy adapters: [tomcat9(credentialsId: 'tomcatcreds', path: '', url: 'http://20.197.32.111:8081/')], contextPath: null, war: '**/*war'
 			}
 		}
 	}
