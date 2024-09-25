@@ -2,11 +2,10 @@ pipeline{
 
 	agent any
 	stages{
-		stage('first step')
+		stage('Fetching code from github')
 		{
 			steps{
-		   echo 'Hello World'
-			}
+                     git 'https://github.com/sagarrajput2111/Maven-build-jenkins.git'			}
 		}
 		stage('second step')
 		{
