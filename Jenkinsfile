@@ -22,9 +22,6 @@ pipeline{
 	}
 
 	post {
-        started { 
-            slackSend color: '#439FE0', message: "Starting build ${env.JOB_NAME} #${env.BUILD_NUMBER}..." 
-                }
         success {
             slackSend color: 'good', message: "Build ${env.JOB_NAME} #${env.BUILD_NUMBER} is successful!"
         }
