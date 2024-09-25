@@ -4,7 +4,11 @@ pipeline{
 	stages{
 		stage('Fetching code from github')
 		{
+			
 			steps{
+		     script {
+                    slackSend color: '#439FE0', message: "Starting build ${env.JOB_NAME} #${env.BUILD_NUMBER}..."
+                }
                      git 'https://github.com/sagarrajput2111/Maven-build-jenkins.git'			}
 		}
 		stage('generating artifacts')
