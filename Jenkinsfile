@@ -20,5 +20,20 @@ pipeline{
 			}
 		}
 	}
+
+	post {
+        success {
+            slackSend color: 'good', message: 'Build ${JOB_NAME} #${BUILD_NUMBER} is successful!'
+        }
+        failure {
+            slackSend color: 'danger', message: 'Build ${JOB_NAME} #${BUILD_NUMBER} has failed!'
+        }
+        unstable {
+            slackSend color: 'warning', message: 'Build ${JOB_NAME} #${BUILD_NUMBER} is unstable!'
+        }
+        aborted {
+            slackSend color: 'danger', message: 'Build ${JOB_NAME} #${BUILD_NUMBER} has been aborted!'
+        }
+    }
 	
 }
